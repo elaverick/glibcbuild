@@ -128,9 +128,9 @@ chmod +x find_requires.sh
 cd %{_builddir}/%{name}-build
 ../%{name}-%{version}/configure \
         --host=%{_host} --build=%{_build} \
-        CFLAGS="%{optflags}  -I/usr/local/include/kernel_headers_%{KERNELVERSION}/usr/include/" \
-        CXXFLAGS="%{optflags} -I /usr/local/include/kernel_headers_%{KERNELVERSION}/usr/include/" \
-        CPPFLAGS="-fno-lto -I /usr/local/include/kernel_headers_%{KERNELVERSION}/usr/include/" \
+        CFLAGS="%{optflags}" \
+        CXXFLAGS="%{optflags}" \
+        CPPFLAGS="-fno-lto" \
         LDFLAGS="-flinker-output=nolto-rel" \
         --program-prefix=%{?_program_prefix} \
         --disable-dependency-tracking \
