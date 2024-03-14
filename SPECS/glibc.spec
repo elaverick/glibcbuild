@@ -6,7 +6,7 @@
 Summary:        Main C library
 Name:           glibc
 Version:        %{version}
-Release:        1%{?dist}
+Release:        1%{PKG_RELEASE}
 License:        LGPLv2+
 URL:            http://www.gnu.org/software/libc
 Group:          Applications/System
