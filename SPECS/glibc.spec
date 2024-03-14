@@ -128,9 +128,9 @@ chmod +x find_requires.sh
 cd %{_builddir}/%{name}-build
 ../%{name}-%{version}/configure \
         --host=%{_host} --build=%{_build} \
-        CFLAGS="%{optflags}  -I/usr/local/include/kernel_headers_6_6/usr/include/" \
-        CXXFLAGS="%{optflags} -I /usr/local/include/kernel_headers_6_6/usr/include/" \
-        CPPFLAGS="-fno-lto -I /usr/local/include/kernel_headers_6_6/usr/include/" \
+        CFLAGS="%{optflags}  -I/usr/local/include/kernel_headers_%{KERNELVERSION}/usr/include/" \
+        CXXFLAGS="%{optflags} -I /usr/local/include/kernel_headers_%{KERNELVERSION}/usr/include/" \
+        CPPFLAGS="-fno-lto -I /usr/local/include/kernel_headers_%{KERNELVERSION}/usr/include/" \
         LDFLAGS="-flinker-output=nolto-rel" \
         --program-prefix=%{?_program_prefix} \
         --disable-dependency-tracking \
@@ -149,7 +149,7 @@ cd %{_builddir}/%{name}-build
         --infodir=%{_infodir} \
         --disable-profile \
         --disable-werror \
-        --enable-kernel=6.6 \
+        --enable-kernel=%{KERNELVERSION} \
         --enable-bind-now \
         --enable-cet \
         --enable-stack-protector=strong \
