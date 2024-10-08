@@ -12,11 +12,8 @@ URL:            http://www.gnu.org/software/libc
 Group:          Applications/System
 
 
-Source0: http://ftp.gnu.org/gnu/glibc/%{name}-%{version}.tar.xz
-%define sha512 %{name}=9ea0bbda32f83a85b7da0c34f169607fb8a102f0a11a914e6bf531be47d1bef4f5307128286cffa1e2dc5879f0e6ccaef527dd353486883fa332a0b44bde8b3e
-
-Source1:        locale-gen.sh
-Source2:        locale-gen.conf
+Source0:        locale-gen.sh
+Source1:        locale-gen.conf
 
 #Patch taken from http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.31-fhs-1.patch
 Patch0:         glibc-2.31-fhs-1.patch
@@ -171,8 +168,8 @@ install -vdm 755 %{buildroot}%{_sharedstatedir}/cache/nscd
 install -vdm 755 %{buildroot}%{_libdir}/locale
 cp -v ../%{name}-%{version}/nscd/nscd.conf %{buildroot}%{_sysconfdir}/nscd.conf
 #       Install locale generation script and config file
-cp -v %{SOURCE2} %{buildroot}%{_sysconfdir}
-cp -v %{SOURCE1} %{buildroot}%{_sbindir}
+cp -v %{SOURCE1} %{buildroot}%{_sysconfdir}
+cp -v %{SOURCE0} %{buildroot}%{_sbindir}
 #       Remove unwanted cruft
 rm -rf %{buildroot}%{_infodir}
 #       Install configuration files
