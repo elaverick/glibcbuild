@@ -91,7 +91,7 @@ Requires:   %{name} = %{version}-%{release}
 Name Service Cache Daemon
 
 %prep
-%autosetup -T -p1
+%autosetup -D -T -p1
 sed -i 's/\\$$(pwd)/`pwd`/' timezone/Makefile
 install -vdm 755 %{_builddir}/%{name}-build
 # do not try to explicitly provide GLIBC_PRIVATE versioned libraries
