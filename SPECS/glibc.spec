@@ -12,8 +12,8 @@ URL:            http://www.gnu.org/software/libc
 Group:          Applications/System
 
 
-Source0:        locale-gen.sh
-Source1:        locale-gen.conf
+Source1:        locale-gen.sh
+Source2:        locale-gen.conf
 
 #Patch taken from http://www.linuxfromscratch.org/patches/downloads/glibc/glibc-2.31-fhs-1.patch
 Patch0:         glibc-2.31-fhs-1.patch
@@ -91,7 +91,7 @@ Requires:   %{name} = %{version}-%{release}
 Name Service Cache Daemon
 
 %prep
-%autosetup -p1
+%autosetup -T -p1
 sed -i 's/\\$$(pwd)/`pwd`/' timezone/Makefile
 install -vdm 755 %{_builddir}/%{name}-build
 # do not try to explicitly provide GLIBC_PRIVATE versioned libraries
@@ -168,8 +168,8 @@ install -vdm 755 %{buildroot}%{_sharedstatedir}/cache/nscd
 install -vdm 755 %{buildroot}%{_libdir}/locale
 cp -v ../%{name}-%{version}/nscd/nscd.conf %{buildroot}%{_sysconfdir}/nscd.conf
 #       Install locale generation script and config file
-cp -v %{SOURCE1} %{buildroot}%{_sysconfdir}
-cp -v %{SOURCE0} %{buildroot}%{_sbindir}
+cp -v %{SOURCE2} %{buildroot}%{_sysconfdir}
+cp -v %{SOURCE1} %{buildroot}%{_sbindir}
 #       Remove unwanted cruft
 rm -rf %{buildroot}%{_infodir}
 #       Install configuration files
